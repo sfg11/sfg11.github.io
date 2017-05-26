@@ -1,199 +1,199 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-      @import url(http://fonts.googleapis.com/css?family=Gabriela|Dosis:200);
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+@import url(http://fonts.googleapis.com/css?family=Gabriela|Dosis:200);
 
 body {
-  font-family: "Vidaloka", serif;
-  font-smoothing: antialiased;
-  font-weight: normal;
-  background: #151618;
-  color: #FFF;
-  margin: 100px 150px 100px 80px;
+font-family: "Vidaloka", serif;
+font-smoothing: antialiased;
+font-weight: normal;
+background: #151618;
+color: #FFF;
+margin: 100px 150px 100px 80px;
 }
 
 h1 {
-  text-transform: capitalize;
-  letter-spacing: 4px;
-  font-weight: normal;
-  font-size: 32px;
+text-transform: capitalize;
+letter-spacing: 4px;
+font-weight: normal;
+font-size: 32px;
 }
 
 p {
-  line-height: 1.6em;
-  text-align: center;
-  font-size: 14px;
+line-height: 1.6em;
+text-align: center;
+font-size: 14px;
 }
 
 p + p {
-  margin-top: 1.0em;
+margin-top: 1.0em;
 }
 
 a {
-  transition: color 0.2s ease-out;
-  text-decoration: none;
-  color: #FBB;
+transition: color 0.2s ease-out;
+text-decoration: none;
+color: #FBB;
 }
 
 a:hover {
-  color: #444;
+color: #444;
 }
 
 .overlay {
-  pointer-events: none;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
+pointer-events: none;
+position: absolute;
+height: 100%;
+width: 100%;
+left: 0;
+top: 0;
 }
 
 .logo {
-  margin-bottom: 10px;
-  height: 120px;
-  width: 120px;
+margin-bottom: 10px;
+height: 120px;
+width: 120px;
 }
 
 .container {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+position: absolute;
+height: 100%;
+width: 100%;
 }
 
 .wrapper {
-  transition: opacity 0.4s ease-out;
-  margin: -280px -180px;
-  text-align: center;
-  position: absolute;
-  height: 560px;
-  width: 360px;
-  left: 50%;
-  top: 50%;
+transition: opacity 0.4s ease-out;
+margin: -280px -180px;
+text-align: center;
+position: absolute;
+height: 560px;
+width: 360px;
+left: 50%;
+top: 50%;
 }
 
 .header {
-  margin-bottom: 80px;
+margin-bottom: 80px;
 }
 
 .information {
-  margin-bottom: 60px;
+margin-bottom: 60px;
 }
 
 .footer {
-  font-family: Baskerville, sans-serif;
-  font-size: 30px;
+font-family: Baskerville, sans-serif;
+font-size: 30px;
 }
 
 .footer a {
-  text-transform: uppercase;
-  font-size: 11px;
+text-transform: uppercase;
+font-size: 11px;
 }
 
 .footer .handle {
-  font-style: italic;
+font-style: italic;
 }
 
 .controls {
-  font-smoothing: subpixel-antialiased;
-  position: absolute;
-  right: 20px;
-  top: 0;
+font-smoothing: subpixel-antialiased;
+position: absolute;
+right: 20px;
+top: 0;
 }
 
 .links {
-  position: absolute;
-  list-style: none;
-  width: 120px;
-  bottom: 40px;
-  right: 20px;
-  padding: 0;
-  margin: 0;
+position: absolute;
+list-style: none;
+width: 120px;
+bottom: 40px;
+right: 20px;
+padding: 0;
+margin: 0;
 }
 
 .links li {
-  border-bottom: #222 1px solid;
-  border-bottom: rgba(255,255,255,0.1) 1px solid;
+border-bottom: #222 1px solid;
+border-bottom: rgba(255,255,255,0.1) 1px solid;
 }
 
 .links li a {
-  transition: opacity 0.2s ease-out;
-  font-smoothing: subpixel-antialiased;
-  font-family: 'Dosis', sans-serif;
-  text-transform: uppercase;
-  text-align: right;
-  padding: 0.25em 0;
-  letter-spacing: 2px;
-  font-weight: 200;
-  font-size: 12px;
-  display: block;
-  width: 100%;
-  opacity: 0.4;
-  color: #FFF;
+transition: opacity 0.2s ease-out;
+font-smoothing: subpixel-antialiased;
+font-family: 'Dosis', sans-serif;
+text-transform: uppercase;
+text-align: right;
+padding: 0.25em 0;
+letter-spacing: 2px;
+font-weight: 200;
+font-size: 12px;
+display: block;
+width: 100%;
+opacity: 0.4;
+color: #FFF;
 }
 
 .links li a:hover {
-  opacity: 0.8;
+opacity: 0.8;
 }
 
 .links li .download:before {
-  opacity: 0.5;
-  content: 'â†“';
-  float: left;
+opacity: 0.5;
+content: 'â†“';
+float: left;
 }
 
 .links li .source:before {
-  opacity: 0.5;
-  content: '{}';
-  float: left;
+opacity: 0.5;
+content: '{}';
+float: left;
 }
 
 .links li .design:before {
-  opacity: 0.5;
-  content: 'â–³';
-  float: left;
+opacity: 0.5;
+content: 'â–³';
+float: left;
 }
 
 .vignette {
-  background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
-  background-image: radial-gradient(50% 50%, ellipse, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+background-image: radial-gradient(50% 50%, ellipse, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
 }
 
 .noise {
-  opacity: 0.075;
+opacity: 0.075;
 }
 
 .hide {
-  opacity: 0;
+opacity: 0;
 }
-    </style>
-    <title>Sarah's Website</title>
-  </head>
-  <body>
-    <div id="container" class="container">
-              <div id="wrapper" class="wrapper">
+</style>
+<title>Sarah's Website</title>
+</head>
+<body>
+<div id="container" class="container">
+<div id="wrapper" class="wrapper">
 
-      <div id="output" class="container">
-      </div>
-         <div id="vignette" class="overlay vignette">
-           
-         <p> <h1> Sarah Gibbons </h1> 
-          <p> Hello! I'm a junior at Texas State University pursuing a double major in Computer Science and Applied Mathematics. Thanks for visiting my website!</p>
-          <a href="http://www.github.com/sfg11" target=blank>GitHub</a><br>
-          <a href="Sarah_Gibbons_Resume.pdf" target=blank>My Resume</a><br>
-          <a href="contact.html">Contact</a><br>
-       <div id="noise" class="overlay noise">
-      </div>
-      </div>
-          <div style="display:none;" id="controls" class="controls"></div>
-      
-        
-      
-  <script src="prefixfree.min.js"></script>
-  <script src="dat.gui.min.js"></script>
-  <script src="fss.min.js"></script>
-  <script src="background.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
- </html>
+<div id="output" class="container">
+</div>
+<div id="vignette" class="overlay vignette">
+
+<p> <h1> Sarah Gibbons </h1> 
+<p> Hello! I'm a junior at Texas State University pursuing a double major in Computer Science and Applied Mathematics. Thanks for visiting my website!</p>
+<a href="http://www.github.com/sfg11" target=blank>GitHub</a><br>
+<a href="Sarah_Gibbons_Resume.pdf" target=blank>My Resume</a><br>
+<a href="contact.html">Contact</a><br>
+<div id="noise" class="overlay noise">
+</div>
+</div>
+<div style="display:none;" id="controls" class="controls"></div>
+
+
+
+<script src="prefixfree.min.js"></script>
+<script src="dat.gui.min.js"></script>
+<script src="fss.min.js"></script>
+<script src="background.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
