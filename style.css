@@ -4,8 +4,9 @@ body {
   font-family: "Vidaloka", serif;
   font-smoothing: antialiased;
   font-weight: normal;
- background-color: #65737e
-  
+  background: #151618;
+  color: #FFF;
+  padding:10px;
   margin:0;
 }
 
