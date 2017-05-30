@@ -29,7 +29,7 @@ p + p {
 a {
   transition: color 0.2s ease-out;
   text-decoration: none;
-  color: #FBB;
+  color: #FFF;
 }
 
 a:hover {
