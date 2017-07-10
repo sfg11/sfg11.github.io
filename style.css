@@ -30,7 +30,7 @@ p + p {
 a {
   text-decoration: none; 
   transition: color 0.2s ease-out;
-  color: #FFF;
+  color: #0000ff;
   
 }
 
@@ -64,8 +64,8 @@ a:hover {
   margin: -280px -180px;
   text-align: center;
   position: absolute;
-  height: 560px;
-  width: 360px;
+  height: 800px;
+  width: 800px;
   left: 50%;
   top: 50%;
   background: url("overlay.png");
