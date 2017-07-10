@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Gabriela|Dosis|Open+Sans:200);
+@import url(http://fonts.googleapis.com/css?family=Vast+Shadow|Open+Sans);
 
 body {
-  font-family: "Vidaloka", serif;
+    font-family: "Open Sans", Arial, sans;
   font-smoothing: antialiased;
   font-weight: normal;
   background: #151618;
@@ -14,6 +14,7 @@ h1 {
   letter-spacing: 4px;
   font-weight: normal;
   font-size: 48px;
+  font-family: "Vast Shadow", Georgia, serif;
 }
 
 p {
@@ -30,7 +31,6 @@ a {
   text-decoration: none; 
   transition: color 0.2s ease-out;
   color: #FFF;
-  font-family: "Open Sans", Arial, sans; 
   
 }
 
