@@ -29,14 +29,13 @@ p + p {
 
 a {
   text-decoration: none; 
-  transition: color 0.2s ease-out;
+  transition: 0.2s ease-out;
   color: #f3e3c3;
   
 }
 
 a:hover {
   color: #444;
-  text-decoration: underline;
 }
 
 .overlay {
