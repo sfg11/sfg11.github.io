@@ -66,8 +66,8 @@ a:hover {
   position: absolute;
   height: 100%;
   width: 100%;
-  left: 50%;
-  top: 50%;
+  left: 0%;
+  top: 0%;
   background: url("overlay.png");
 }
 
