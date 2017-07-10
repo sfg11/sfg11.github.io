@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Vast+Shadow|Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Vast+Shadow|Open+Sans');
 
 body {
-    font-family: "Open Sans", Arial, sans;
+  font-family: 'Open Sans', Arial, sans;
   font-smoothing: antialiased;
   font-weight: normal;
   background: #151618;
@@ -14,7 +14,7 @@ h1 {
   letter-spacing: 4px;
   font-weight: normal;
   font-size: 48px;
-  font-family: "Vast Shadow", Georgia, serif;
+  font-family: 'Vast Shadow', Georgia, serif;
 }
 
 p {
