@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Gabriela|Dosis:200);
+@import url(http://fonts.googleapis.com/css?family=Gabriela|Dosis|Open+Sans:200);
 
 body {
   font-family: "Vidaloka", serif;
@@ -30,6 +30,8 @@ a {
   text-decoration: none; 
   transition: color 0.2s ease-out;
   color: #FFF;
+  font-family: "Open Sans", Arial, sans; 
+  
 }
 
 a:hover {
