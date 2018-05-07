@@ -4,7 +4,7 @@ body {
   font-family: 'Open Sans', Arial, sans-serif;
   font-smoothing: antialiased;
   font-weight: normal;
-  background: #151618;
+  background:#adc8ff;
   color: #000;
   margin:0;
 }
@@ -28,10 +28,10 @@ p + p {
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   transition: 0.2s ease-out;
   color: #f3e3c3;
-  
+
 }
 
 a:hover {
@@ -62,13 +62,13 @@ a:hover {
 
 .wrapper {
   transition: opacity 0.4s ease-out;
- 
+
   text-align: center;
   position: absolute;
   height: 100%;
   width: 100%;
 
- 
+
 }
 
 .header {
@@ -154,7 +154,7 @@ a:hover {
 }
 
 .vignette {
- 
+
 }
 
 .noise {
