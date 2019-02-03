@@ -1,2 +1,9 @@
+##  Portfolio repo! :smiley_cat:
+### Languages used: Javascript, HTML and CSS
 
-This is the repo for my website stuffs: sfg11.github.io/Sarahs-Website
+Check it out: [sarahs website](sfg11.github.io)
+Things included:
+* a cool visualization (most importantly)
+* links to my GitHub projects
+* a small *about me*
+* contact info
