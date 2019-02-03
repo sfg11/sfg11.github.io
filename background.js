@@ -67,10 +67,10 @@
     maxLightY: 0.4,
     export: function() {
       var l, x, y, light,
-          depth = MESH.depth,
-          zOffset = LIGHT.zOffset,
-          autopilot = LIGHT.autopilot,
-          scalar = this.width / renderer.width;
+      depth = MESH.depth,
+      zOffset = LIGHT.zOffset,
+      autopilot = LIGHT.autopilot,
+      scalar = this.width / renderer.width;
 
       LIGHT.autopilot = true;
       LIGHT.draw = this.drawLights;
@@ -92,16 +92,16 @@
 
       switch(RENDER.renderer) {
         case WEBGL:
-          window.open(webglRenderer.element.toDataURL(), '_blank');
-          break;
+        window.open(webglRenderer.element.toDataURL(), '_blank');
+        break;
         case CANVAS:
-          window.open(canvasRenderer.element.toDataURL(), '_blank');
-          break;
+        window.open(canvasRenderer.element.toDataURL(), '_blank');
+        break;
         case SVG:
-          var data = encodeURIComponent(output.innerHTML);
-          var url = "data:image/svg+xml," + data;
-          window.open(url, '_blank');
-          break;
+        var data = encodeURIComponent(output.innerHTML);
+        var url = "data:image/svg+xml," + data;
+        window.open(url, '_blank');
+        break;
       }
 
       LIGHT.draw = true;
@@ -161,14 +161,14 @@
     }
     switch(index) {
       case WEBGL:
-        renderer = webglRenderer;
-        break;
+      renderer = webglRenderer;
+      break;
       case CANVAS:
-        renderer = canvasRenderer;
-        break;
+      renderer = canvasRenderer;
+      break;
       case SVG:
-        renderer = svgRenderer;
-        break;
+      renderer = svgRenderer;
+      break;
     }
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     output.appendChild(renderer.element);
@@ -264,224 +264,224 @@
         LIGHT.bounds[0]*ox,
         LIGHT.bounds[1]*oy,
         LIGHT.zOffset);
-    }
+      }
 
-    // Animate Lights
-    for (l = scene.lights.length - 1; l >= 0; l--) {
-      light = scene.lights[l];
-
-      // Reset the z position of the light
-      FSS.Vector3.setZ(light.position, LIGHT.zOffset);
-
-      // Calculate the force Luke!
-      var D = Math.clamp(FSS.Vector3.distanceSquared(light.position, attractor), LIGHT.minDistance, LIGHT.maxDistance);
-      var F = LIGHT.gravity * light.mass / D;
-      FSS.Vector3.subtractVectors(light.force, attractor, light.position);
-      FSS.Vector3.normalise(light.force);
-      FSS.Vector3.multiplyScalar(light.force, F);
-
-      // Update the light position
-      FSS.Vector3.set(light.acceleration);
-      FSS.Vector3.add(light.acceleration, light.force);
-      FSS.Vector3.add(light.velocity, light.acceleration);
-      FSS.Vector3.multiplyScalar(light.velocity, LIGHT.dampening);
-      FSS.Vector3.limit(light.velocity, LIGHT.minLimit, LIGHT.maxLimit);
-      FSS.Vector3.add(light.position, light.velocity);
-    }
-
-    // Animate Vertices
-    for (v = geometry.vertices.length - 1; v >= 0; v--) {
-      vertex = geometry.vertices[v];
-      ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
-      oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
-      oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);
-      FSS.Vector3.set(vertex.position,
-        MESH.xRange*geometry.segmentWidth*ox,
-        MESH.yRange*geometry.sliceHeight*oy,
-        MESH.zRange*offset*oz - offset);
-      FSS.Vector3.add(vertex.position, vertex.anchor);
-    }
-
-    // Set the Geometry to dirty
-    geometry.dirty = true;
-  }
-
-  function render() {
-    renderer.render(scene);
-
-    // Draw Lights
-    if (LIGHT.draw) {
-      var l, lx, ly, light;
+      // Animate Lights
       for (l = scene.lights.length - 1; l >= 0; l--) {
         light = scene.lights[l];
-        lx = light.position[0];
-        ly = light.position[1];
-        switch(RENDER.renderer) {
-          case CANVAS:
-            // renderer.context.lineWidth = 0.5;
-            // renderer.context.beginPath();
-            // renderer.context.arc(lx, ly, 10, 0, Math.PIM2);
-            // renderer.context.strokeStyle = light.ambientHex;
-            // renderer.context.stroke();
-            // renderer.context.beginPath();
-            // renderer.context.arc(lx, ly, 4, 0, Math.PIM2);
-            // renderer.context.fillStyle = light.diffuseHex;
-            // renderer.context.fill();
-            break;
-          case SVG:
-            lx += renderer.halfWidth;
-            ly = renderer.halfHeight - ly;
-            light.core.setAttributeNS(null, 'fill', light.diffuseHex);
-            light.core.setAttributeNS(null, 'cx', lx);
-            light.core.setAttributeNS(null, 'cy', ly);
-            renderer.element.appendChild(light.core);
-            light.ring.setAttributeNS(null, 'stroke', light.ambientHex);
-            light.ring.setAttributeNS(null, 'cx', lx);
-            light.ring.setAttributeNS(null, 'cy', ly);
-            renderer.element.appendChild(light.ring);
-            break;
+
+        // Reset the z position of the light
+        FSS.Vector3.setZ(light.position, LIGHT.zOffset);
+
+        // Calculate the force Luke!
+        var D = Math.clamp(FSS.Vector3.distanceSquared(light.position, attractor), LIGHT.minDistance, LIGHT.maxDistance);
+        var F = LIGHT.gravity * light.mass / D;
+        FSS.Vector3.subtractVectors(light.force, attractor, light.position);
+        FSS.Vector3.normalise(light.force);
+        FSS.Vector3.multiplyScalar(light.force, F);
+
+        // Update the light position
+        FSS.Vector3.set(light.acceleration);
+        FSS.Vector3.add(light.acceleration, light.force);
+        FSS.Vector3.add(light.velocity, light.acceleration);
+        FSS.Vector3.multiplyScalar(light.velocity, LIGHT.dampening);
+        FSS.Vector3.limit(light.velocity, LIGHT.minLimit, LIGHT.maxLimit);
+        FSS.Vector3.add(light.position, light.velocity);
+      }
+
+      // Animate Vertices
+      for (v = geometry.vertices.length - 1; v >= 0; v--) {
+        vertex = geometry.vertices[v];
+        ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
+        oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
+        oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);
+        FSS.Vector3.set(vertex.position,
+          MESH.xRange*geometry.segmentWidth*ox,
+          MESH.yRange*geometry.sliceHeight*oy,
+          MESH.zRange*offset*oz - offset);
+          FSS.Vector3.add(vertex.position, vertex.anchor);
+        }
+
+        // Set the Geometry to dirty
+        geometry.dirty = true;
+      }
+
+      function render() {
+        renderer.render(scene);
+
+        // Draw Lights
+        if (LIGHT.draw) {
+          var l, lx, ly, light;
+          for (l = scene.lights.length - 1; l >= 0; l--) {
+            light = scene.lights[l];
+            lx = light.position[0];
+            ly = light.position[1];
+            switch(RENDER.renderer) {
+              case CANVAS:
+              // renderer.context.lineWidth = 0.5;
+              // renderer.context.beginPath();
+              // renderer.context.arc(lx, ly, 10, 0, Math.PIM2);
+              // renderer.context.strokeStyle = light.ambientHex;
+              // renderer.context.stroke();
+              // renderer.context.beginPath();
+              // renderer.context.arc(lx, ly, 4, 0, Math.PIM2);
+              // renderer.context.fillStyle = light.diffuseHex;
+              // renderer.context.fill();
+              break;
+              case SVG:
+              lx += renderer.halfWidth;
+              ly = renderer.halfHeight - ly;
+              light.core.setAttributeNS(null, 'fill', light.diffuseHex);
+              light.core.setAttributeNS(null, 'cx', lx);
+              light.core.setAttributeNS(null, 'cy', ly);
+              renderer.element.appendChild(light.core);
+              light.ring.setAttributeNS(null, 'stroke', light.ambientHex);
+              light.ring.setAttributeNS(null, 'cx', lx);
+              light.ring.setAttributeNS(null, 'cy', ly);
+              renderer.element.appendChild(light.ring);
+              break;
+            }
+          }
         }
       }
-    }
-  }
 
-  function addEventListeners() {
-    window.addEventListener('resize', onWindowResize);
-    container.addEventListener('click', onMouseClick);
-    container.addEventListener('mousemove', onMouseMove);
-  }
-
-  function addControls() {
-    var i, l, light, folder, controller;
-
-    // Create GUI
-    gui = new dat.GUI({autoPlace:false});
-    controls.appendChild(gui.domElement);
-
-    // Create folders
-    uiFolder = gui.addFolder('UI');
-    renderFolder = gui.addFolder('Render');
-    meshFolder = gui.addFolder('Mesh');
-    lightFolder = gui.addFolder('Light');
-    exportFolder = gui.addFolder('Export');
-
-    // Open folders
-    uiFolder.open();
-    renderFolder.open();
-    // meshFolder.open();
-    lightFolder.open();
-    // exportFolder.open();
-
-    // Add UI Controls
-    controller = uiFolder.add(UI, 'show');
-    controller.onChange(function(value) {
-      ui.className = value ? 'wrapper' : 'wrapper hide';
-    });
-
-    // Add Render Controls
-    controller = renderFolder.add(RENDER, 'renderer', {webgl:WEBGL, canvas:CANVAS, svg:SVG});
-    controller.onChange(function(value) {
-      setRenderer(value);
-    });
-
-    // Add Mesh Controls
-    controller = meshFolder.addColor(MESH, 'ambient');
-    controller.onChange(function(value) {
-      for (i = 0, l = scene.meshes.length; i < l; i++) {
-        scene.meshes[i].material.ambient.set(value);
+      function addEventListeners() {
+        window.addEventListener('resize', onWindowResize);
+        container.addEventListener('click', onMouseClick);
+        container.addEventListener('mousemove', onMouseMove);
       }
-    });
-    controller = meshFolder.addColor(MESH, 'diffuse');
-    controller.onChange(function(value) {
-      for (i = 0, l = scene.meshes.length; i < l; i++) {
-        scene.meshes[i].material.diffuse.set(value);
+
+      function addControls() {
+        var i, l, light, folder, controller;
+
+        // Create GUI
+        gui = new dat.GUI({autoPlace:false});
+        controls.appendChild(gui.domElement);
+
+        // Create folders
+        uiFolder = gui.addFolder('UI');
+        renderFolder = gui.addFolder('Render');
+        meshFolder = gui.addFolder('Mesh');
+        lightFolder = gui.addFolder('Light');
+        exportFolder = gui.addFolder('Export');
+
+        // Open folders
+        uiFolder.open();
+        renderFolder.open();
+        // meshFolder.open();
+        lightFolder.open();
+        // exportFolder.open();
+
+        // Add UI Controls
+        controller = uiFolder.add(UI, 'show');
+        controller.onChange(function(value) {
+          ui.className = value ? 'wrapper' : 'wrapper hide';
+        });
+
+        // Add Render Controls
+        controller = renderFolder.add(RENDER, 'renderer', {webgl:WEBGL, canvas:CANVAS, svg:SVG});
+        controller.onChange(function(value) {
+          setRenderer(value);
+        });
+
+        // Add Mesh Controls
+        controller = meshFolder.addColor(MESH, 'ambient');
+        controller.onChange(function(value) {
+          for (i = 0, l = scene.meshes.length; i < l; i++) {
+            scene.meshes[i].material.ambient.set(value);
+          }
+        });
+        controller = meshFolder.addColor(MESH, 'diffuse');
+        controller.onChange(function(value) {
+          for (i = 0, l = scene.meshes.length; i < l; i++) {
+            scene.meshes[i].material.diffuse.set(value);
+          }
+        });
+        controller = meshFolder.add(MESH, 'width', 0.05, 2);
+        controller.onChange(function(value) {
+          if (geometry.width !== value * renderer.width) { createMesh(); }
+        });
+        controller = meshFolder.add(MESH, 'height', 0.05, 2);
+        controller.onChange(function(value) {
+          if (geometry.height !== value * renderer.height) { createMesh(); }
+        });
+        controller = meshFolder.add(MESH, 'depth', 0, 50);
+        controller = meshFolder.add(MESH, 'segments', 1, 20);
+        controller.step(1);
+        controller.onChange(function(value) {
+          if (geometry.segments !== value) { createMesh(); }
+        });
+        controller = meshFolder.add(MESH, 'slices', 1, 20);
+        controller.step(1);
+        controller.onChange(function(value) {
+          if (geometry.slices !== value) { createMesh(); }
+        });
+        controller = meshFolder.add(MESH, 'xRange', 0, 1);
+        controller = meshFolder.add(MESH, 'yRange', 0, 1);
+        controller = meshFolder.add(MESH, 'speed', 0, 0.01);
+
+        // Add Light Controls
+        autopilotController = lightFolder.add(LIGHT, 'autopilot');
+        controller = lightFolder.addColor(LIGHT, 'ambient');
+        controller.onChange(function(value) {
+          for (i = 0, l = scene.lights.length; i < l; i++) {
+            light = scene.lights[i];
+            light.ambient.set(value);
+            light.ambientHex = light.ambient.format();
+          }
+        });
+        controller = lightFolder.addColor(LIGHT, 'diffuse');
+        controller.onChange(function(value) {
+          for (i = 0, l = scene.lights.length; i < l; i++) {
+            light = scene.lights[i];
+            light.diffuse.set(value);
+            light.diffuseHex = light.diffuse.format();
+          }
+        });
+        controller = lightFolder.add(LIGHT, 'count', 0, 5);
+        controller.step(1);
+        controller.onChange(function(value) {
+          if (scene.lights.length !== value) { createLights(); }
+        });
+        controller = lightFolder.add(LIGHT, 'zOffset', 0, 500);
+        controller.step(1);
+
+        // Add Export Controls
+        controller = exportFolder.add(EXPORT, 'width', 100, 4000);
+        controller.step(100);
+        controller = exportFolder.add(EXPORT, 'height', 100, 4000);
+        controller.step(100);
+        controller = exportFolder.add(EXPORT, 'drawLights');
+        controller = exportFolder.add(EXPORT, 'minLightX', 0, 1);
+        controller = exportFolder.add(EXPORT, 'maxLightX', 0, 1);
+        controller = exportFolder.add(EXPORT, 'minLightY', 0, 1);
+        controller = exportFolder.add(EXPORT, 'maxLightY', 0, 1);
+        controller = exportFolder.add(EXPORT, 'export');
       }
-    });
-    controller = meshFolder.add(MESH, 'width', 0.05, 2);
-    controller.onChange(function(value) {
-      if (geometry.width !== value * renderer.width) { createMesh(); }
-    });
-    controller = meshFolder.add(MESH, 'height', 0.05, 2);
-    controller.onChange(function(value) {
-      if (geometry.height !== value * renderer.height) { createMesh(); }
-    });
-    controller = meshFolder.add(MESH, 'depth', 0, 50);
-    controller = meshFolder.add(MESH, 'segments', 1, 20);
-    controller.step(1);
-    controller.onChange(function(value) {
-      if (geometry.segments !== value) { createMesh(); }
-    });
-    controller = meshFolder.add(MESH, 'slices', 1, 20);
-    controller.step(1);
-    controller.onChange(function(value) {
-      if (geometry.slices !== value) { createMesh(); }
-    });
-    controller = meshFolder.add(MESH, 'xRange', 0, 1);
-    controller = meshFolder.add(MESH, 'yRange', 0, 1);
-    controller = meshFolder.add(MESH, 'speed', 0, 0.01);
 
-    // Add Light Controls
-    autopilotController = lightFolder.add(LIGHT, 'autopilot');
-    controller = lightFolder.addColor(LIGHT, 'ambient');
-    controller.onChange(function(value) {
-      for (i = 0, l = scene.lights.length; i < l; i++) {
-        light = scene.lights[i];
-        light.ambient.set(value);
-        light.ambientHex = light.ambient.format();
+      //------------------------------
+      // Callbacks
+      //------------------------------
+      function onMouseClick(event) {
+        FSS.Vector3.set(attractor, event.x, renderer.height - event.y);
+        FSS.Vector3.subtract(attractor, center);
+        LIGHT.autopilot = !LIGHT.autopilot;
+        autopilotController.updateDisplay();
       }
-    });
-    controller = lightFolder.addColor(LIGHT, 'diffuse');
-    controller.onChange(function(value) {
-      for (i = 0, l = scene.lights.length; i < l; i++) {
-        light = scene.lights[i];
-        light.diffuse.set(value);
-        light.diffuseHex = light.diffuse.format();
+
+      function onMouseMove(event) {
+        FSS.Vector3.set(attractor, event.x, renderer.height - event.y);
+        FSS.Vector3.subtract(attractor, center);
       }
-    });
-    controller = lightFolder.add(LIGHT, 'count', 0, 5);
-    controller.step(1);
-    controller.onChange(function(value) {
-      if (scene.lights.length !== value) { createLights(); }
-    });
-    controller = lightFolder.add(LIGHT, 'zOffset', 0, 500);
-    controller.step(1);
 
-    // Add Export Controls
-    controller = exportFolder.add(EXPORT, 'width', 100, 4000);
-    controller.step(100);
-    controller = exportFolder.add(EXPORT, 'height', 100, 4000);
-    controller.step(100);
-    controller = exportFolder.add(EXPORT, 'drawLights');
-    controller = exportFolder.add(EXPORT, 'minLightX', 0, 1);
-    controller = exportFolder.add(EXPORT, 'maxLightX', 0, 1);
-    controller = exportFolder.add(EXPORT, 'minLightY', 0, 1);
-    controller = exportFolder.add(EXPORT, 'maxLightY', 0, 1);
-    controller = exportFolder.add(EXPORT, 'export');
-  }
-
-  //------------------------------
-  // Callbacks
-  //------------------------------
-  function onMouseClick(event) {
-    FSS.Vector3.set(attractor, event.x, renderer.height - event.y);
-    FSS.Vector3.subtract(attractor, center);
-    LIGHT.autopilot = !LIGHT.autopilot;
-    autopilotController.updateDisplay();
-  }
-
-  function onMouseMove(event) {
-    FSS.Vector3.set(attractor, event.x, renderer.height - event.y);
-    FSS.Vector3.subtract(attractor, center);
-  }
-
-  function onWindowResize(event) {
-    resize(container.offsetWidth, container.offsetHeight);
-    render();
-  }
+      function onWindowResize(event) {
+        resize(container.offsetWidth, container.offsetHeight);
+        render();
+      }
 
 
 
-  // Let there be light!
-  initialise();
+      // Let there be light!
+      initialise();
 
-})();
+    })();
